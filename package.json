@@ -1,0 +1,17 @@
+{
+  "name": "collab-sync-engine",
+  "version": "1.0.0",
+  "description": "Distributed Real-Time Collaboration & State Sync Engine with CRDTs, Connection State Manager, and Multi-Node Redis Pub/Sub",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server/cluster.js",
+    "dev": "node --watch src/server/cluster.js",
+    "test": "node --test src/tests/crdt.test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ioredis": "^5.4.2",
+    "ws": "^8.18.0",
+    "xlsx": "^0.18.5"
+  }
+}

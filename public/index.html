@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherSync // Distributed Real-Time CRDT State Engine</title>
+  <meta name="description" content="High-concurrency distributed real-time collaborative workspace with CRDTs, Connection State Manager, and Multi-Node Redis Pub/Sub event bus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <div id="app-container" class="app-layout">
+    <!-- Top Navigation & Cluster Status Bar -->
+    <header id="cluster-header" class="header-bar glass-panel">
+      <div class="brand-section">
+        <div class="brand-badge">
+          <span class="pulsing-core"></span>
+          <span class="brand-name">AETHER<span class="accent-text">SYNC</span></span>
+        </div>
+        <span class="engine-tag">CRDT + Multi-Node Engine</span>
+      </div>
+
+      <!-- Cluster Node Routing Controls -->
+      <div class="cluster-routing">
+        <div class="node-selector-container">
+          <label for="node-select-dropdown" class="control-label">Connected Node:</label>
+          <select id="node-select-dropdown" class="custom-select" title="Select target cluster node">
+            <option value="4001" selected>Node 1 (Port 4001)</option>
+            <option value="4002">Node 2 (Port 4002)</option>
+            <option value="4003">Node 3 (Port 4003)</option>
+          </select>
+          <button id="btn-switch-node" class="btn-compact" title="Migrate client to selected server node">
+            Switch Node
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-Time Metrics & State Indicators -->
+      <div class="metrics-bar">
+        <div id="connection-status-badge" class="status-pill status-connecting" title="Connection Lifecycle State">
+          <span class="status-dot"></span>
+          <span id="connection-status-text" class="status-label">CONNECTING</span>
+        </div>
+
+        <div class="metric-pill" title="Round-Trip Ping Latency">
+          <span class="metric-icon">⚡</span>
+          <span id="latency-val" class="metric-value">0</span><span class="metric-unit">ms</span>
+        </div>
+
+        <div id="queue-status-badge" class="metric-pill" title="Unacknowledged mutations in local queue">
+          <span class="metric-icon">📥</span>
+          <span id="queue-count-val" class="metric-value">0</span> <span class="metric-unit">queued</span>
+        </div>
+
+        <div class="metric-pill checksum-pill" title="Document Consistency Checksum">
+          <span class="metric-icon">🔒</span>
+          <span class="metric-unit">CRC:</span>
+          <span id="checksum-val" class="checksum-value">--------</span>
+        </div>
+      </div>
+
+      <!-- Peer Avatars -->
+      <div class="peer-presence-section">
+        <div id="user-badge" class="user-pill">
+          <span id="user-color-dot" class="color-dot"></span>
+          <span id="username-display" class="user-name">You</span>
+        </div>
+        <div id="peer-avatars-container" class="avatar-stack" title="Connected Peers">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tab Bar -->
+    <nav class="tabs-nav glass-panel">
+      <button id="tab-btn-editor" class="tab-btn active" data-tab="editor">
+        <span class="tab-icon">📝</span> Collaborative Code Editor
+      </button>
+      <button id="tab-btn-canvas" class="tab-btn" data-tab="canvas">
+        <span class="tab-icon">🎨</span> Shared Whiteboard Canvas
+      </button>
+      <button id="tab-btn-chaos" class="tab-btn" data-tab="chaos">
+        <span class="tab-icon">🛰️</span> Cluster Topology & Chaos Lab
+      </button>
+    </nav>
+
+    <!-- Workspace Main Views Container -->
+    <main id="workspace-main" class="workspace-viewport">
+      <!-- VIEW 1: Collaborative Code & Markdown Editor -->
+      <section id="view-editor" class="workspace-view active">
+        <div class="editor-subbar glass-panel">
+          <div class="file-meta">
+            <span class="file-tag">CRDT-SYNCED</span>
+            <span class="file-name">distributed_consensus.ts</span>
+          </div>
+          <div class="editor-actions">
+            <span id="rga-char-stats" class="subbar-stat">Chars: 0 | Clocks: 0</span>
+            <button id="btn-copy-code" class="btn-subtle" title="Copy code content">Copy Text</button>
+          </div>
+        </div>
+
+        <div class="editor-wrapper glass-panel">
+          <div id="editor-gutter" class="editor-gutter">
+            <!-- Line numbers generated dynamically -->
+          </div>
+          <div class="editor-input-area">
+            <textarea id="code-editor-textarea" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="// Type code here to observe real-time CRDT synchronization across nodes..."></textarea>
+            <!-- Overlay for peer cursor carats -->
+            <div id="peer-cursors-layer" class="peer-cursors-layer"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 2: Shared Whiteboard Canvas -->
+      <section id="view-canvas" class="workspace-view">
+        <div class="canvas-subbar glass-panel">
+          <div class="canvas-controls">
+            <button id="btn-add-note" class="btn-action">
+              <span>+</span> Add Sticky Note
+            </button>
+            <button id="btn-add-service" class="btn-action btn-service">
+              <span>+</span> Add Service Node
+            </button>
+            <button id="btn-reset-canvas" class="btn-subtle">
+              Reset Layout
+            </button>
+          </div>
+          <div class="canvas-hint">
+            <span class="hint-bullet">💡</span> Drag items freely. Concurrent movements resolve via LWW-Map with Lamport clocks.
+          </div>
+        </div>
+
+        <div id="whiteboard-viewport" class="whiteboard-area">
+          <div id="canvas-grid" class="canvas-grid-surface">
+            <!-- Canvas items (cards, stickies) populated here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: Cluster Topology & Chaos Lab -->
+      <section id="view-chaos" class="workspace-view">
+        <div class="chaos-grid">
+          <!-- Visual Topology Panel -->
+          <div class="chaos-card glass-panel topology-panel">
+            <h2 class="card-title">
+              <span class="card-icon">🌐</span> Distributed Cluster Topology
+            </h2>
+            <div class="topology-diagram">
+              <!-- Node 1 -->
+              <div id="topo-node-1" class="topo-node">
+                <div class="node-header">
+                  <span class="topo-dot"></span>
+                  <span class="node-title">Server Node #1</span>
+                </div>
+                <div class="node-sub">Port: 4001</div>
+                <div class="node-tag">WebSocket Gateway</div>
+                <div id="topo-node-1-clients" class="node-clients">Connected: 0</div>
+              </div>
+
+              <!-- Event Bus Core -->
+              <div id="topo-event-bus" class="topo-bus">
+                <div class="bus-icon">🔄</div>
+                <div class="bus-title">Distributed Event Bus</div>
+                <div id="topo-bus-status" class="bus-type">Redis Pub/Sub (Channel: collab:room:general)</div>
+                <div class="bus-pulse-line"></div>
+              </div>
+
+              <!-- Node 2 -->
+              <div id="topo-node-2" class="topo-node">
+                <div class="node-header">
+                  <span class="topo-dot"></span>
+                  <span class="node-title">Server Node #2</span>
+                </div>
+                <div class="node-sub">Port: 4002</div>
+                <div class="node-tag">WebSocket Gateway</div>
+                <div id="topo-node-2-clients" class="node-clients">Connected: 0</div>
+              </div>
+
+              <!-- Node 3 -->
+              <div id="topo-node-3" class="topo-node">
+                <div class="node-header">
+                  <span class="topo-dot"></span>
+                  <span class="node-title">Server Node #3</span>
+                </div>
+                <div class="node-sub">Port: 4003</div>
+                <div class="node-tag">WebSocket Gateway</div>
+                <div id="topo-node-3-clients" class="node-clients">Connected: 0</div>
+              </div>
+            </div>
+
+            <div class="active-cluster-route">
+              <span>Your Current Route: </span>
+              <strong id="current-route-label" class="highlight-node">Client &rarr; Node 1 (:4001)</strong>
+            </div>
+          </div>
+
+          <!-- Network Chaos Injection Controls -->
+          <div class="chaos-card glass-panel controls-panel">
+            <h2 class="card-title">
+              <span class="card-icon">⚡</span> Network Chaos Simulator
+            </h2>
+            <p class="card-desc">Inject artificial network latency and packet loss to test the resilience of the Connection State Manager and CRDT convergence.</p>
+
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <label for="latency-slider">Artificial Latency Injection:</label>
+                <span id="latency-slider-val" class="slider-reading">0 ms</span>
+              </div>
+              <input type="range" id="latency-slider" min="0" max="2000" step="50" value="0" class="custom-range">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <label for="packet-drop-slider">Simulated Packet Loss Rate:</label>
+                <span id="packet-drop-slider-val" class="slider-reading">0%</span>
+              </div>
+              <input type="range" id="packet-drop-slider" min="0" max="50" step="5" value="0" class="custom-range">
+            </div>
+
+            <div class="chaos-actions">
+              <button id="btn-toggle-disconnect" class="btn-danger">
+                <span class="btn-icon">🔌</span> Sever Socket Connection
+              </button>
+              <button id="btn-force-reconnect" class="btn-success">
+                <span class="btn-icon">🔄</span> Reconnect & Flush Queue
+              </button>
+            </div>
+            <div id="chaos-event-log" class="chaos-mini-log">
+              <div class="log-entry log-info">[System] Chaos simulator ready. Zero artificial degradation.</div>
+            </div>
+          </div>
+
+          <!-- Pending Mutation Queue Inspector -->
+          <div class="chaos-card glass-panel queue-panel">
+            <div class="panel-header-split">
+              <h2 class="card-title">
+                <span class="card-icon">📋</span> Pending Mutation Queue Inspector
+              </h2>
+              <span id="queue-badge-counter" class="counter-badge">0 items</span>
+            </div>
+            <p class="card-desc">Mutations applied optimistically and awaiting acknowledgment from the cluster.</p>
+            <div id="queue-items-container" class="queue-list">
+              <div class="queue-empty">Queue is empty — all mutations acknowledged by cluster.</div>
+            </div>
+          </div>
+
+          <!-- CRDT Verification & State Snapshot -->
+          <div class="chaos-card glass-panel verification-panel">
+            <h2 class="card-title">
+              <span class="card-icon">🔬</span> CRDT Consistency Proof
+            </h2>
+            <div class="proof-metrics">
+              <div class="proof-metric-box">
+                <span class="proof-label">RGA Sequence Nodes</span>
+                <span id="proof-rga-nodes" class="proof-val">0</span>
+              </div>
+              <div class="proof-metric-box">
+                <span class="proof-label">Active Lamport Clock</span>
+                <span id="proof-lamport-clock" class="proof-val">0</span>
+              </div>
+              <div class="proof-metric-box">
+                <span class="proof-label">Consistency CRC</span>
+                <span id="proof-checksum" class="proof-val">--------</span>
+              </div>
+            </div>
+            <div class="proof-actions">
+              <button id="btn-test-convergence" class="btn-action">
+                Run Multi-Window Convergence Check
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

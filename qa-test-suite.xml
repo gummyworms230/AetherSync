@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AetherSync Distributed Real-Time Collaboration &amp; State Sync Engine" 
+           version="1.0" 
+           created="2026-09-17" 
+           author="QA Automation &amp; Systems Team">
+  <description>
+    Comprehensive Quality Assurance (QA) test plan, specifications, and test cases 
+    for Conflict-Free Replicated Data Types (CRDTs), Connection State Manager, 
+    Mutation Queues, and Multi-Node Redis Pub/Sub Event Bus scaling.
+  </description>
+
+  <!-- ==================================================================== -->
+  <!-- SUITE 1: CRDT CONFLICT RESOLUTION (RGA & LWW-MAP)                     -->
+  <!-- ==================================================================== -->
+  <category name="CRDT Conflict Resolution Engine" priority="P0_BLOCKER">
+
+    <testcase id="TC-CRDT-001" name="RGA Sequential Character Insertion">
+      <objective>Verify characters inserted sequentially by a single replica produce exact visual string.</objective>
+      <preconditions>Local RgaSequence initialized with siteId 'alice'.</preconditions>
+      <steps>
+        <step number="1">Call rga.insert(0, 'H')</step>
+        <step number="2">Call rga.insert(1, 'e')</step>
+        <step number="3">Call rga.insert(2, 'l')</step>
+        <step number="4">Call rga.insert(3, 'l')</step>
+        <step number="5">Call rga.insert(4, 'o')</step>
+      </steps>
+      <expected_results>rga.toString() returns exactly 'Hello'. Total active nodes = 5.</expected_results>
+      <type>Functional / Unit</type>
+    </testcase>
+
+    <testcase id="TC-CRDT-002" name="Concurrent RGA Insertions at Identical Cursor Index">
+      <objective>Verify that two replicas inserting characters at the exact same index deterministically converge.</objective>
+      <preconditions>Both replicas Alice and Bob share initial state 'AB'.</preconditions>
+      <steps>
+        <step number="1">Alice inserts 'X' at visual index 1 (between A and B).</step>
+        <step number="2">Bob concurrently inserts 'Y' at visual index 1 (between A and B).</step>
+        <step number="3">Alice applies Bob's remote insert operation.</step>
+        <step number="4">Bob applies Alice's remote insert operation.</step>
+      </steps>
+      <expected_results>
+        Both replicas converge to the exact same string (e.g., 'AYXB'). 
+        No character is lost, duplicated, or corrupted.
+      </expected_results>
+      <type>Concurrency / Distributed</type>
+    </testcase>
+
+    <testcase id="TC-CRDT-003" name="Concurrent Deletion and Insertion with Tombstones">
+      <objective>Verify concurrent edit and delete operations do not delete the wrong character.</objective>
+      <preconditions>Replicas A and B have shared text 'CAT'.</preconditions>
+      <steps>
+        <step number="1">Replica A deletes character at index 1 ('A') -&gt; creates tombstone.</step>
+        <step number="2">Replica B concurrently inserts 'H' at index 2 (after 'A').</step>
+        <step number="3">Cross-apply operations across replicas.</step>
+      </steps>
+      <expected_results>
+        Both replicas converge to 'CHT'. 
+        The newly inserted 'H' is preserved, while 'A' remains tombstoned.
+      </expected_results>
+      <type>Concurrency / Integrity</type>
+    </testcase>
+
+    <testcase id="TC-CRDT-004" name="LWW-Map Concurrent Canvas Item Mutations">
+      <objective>Verify Last-Write-Wins Map resolves simultaneous updates using Lamport timestamps.</objective>
+      <preconditions>LwwMap instances mapA and mapB.</preconditions>
+      <steps>
+        <step number="1">Site A updates card position: { x: 100, y: 200, color: 'blue' }.</step>
+        <step number="2">Site B concurrently updates same card: { x: 150, y: 250, color: 'emerald' }.</step>
+        <step number="3">Cross-apply ops between Site A and Site B.</step>
+      </steps>
+      <expected_results>
+        Higher Lamport timestamp wins deterministically across both sites.
+        Object attributes converge to identical JSON values.
+      </expected_results>
+      <type>State-Based CRDT</type>
+    </testcase>
+
+    <testcase id="TC-CRDT-005" name="Out-of-Order Operation Idempotency">
+      <objective>Verify duplicate or out-of-order operations do not corrupt document state.</objective>
+      <preconditions>RgaSequence instance with initial text.</preconditions>
+      <steps>
+        <step number="1">Apply remote operation OP-1.</step>
+        <step number="2">Apply remote operation OP-1 a second time (duplicate delivery).</step>
+      </steps>
+      <expected_results>
+        RgaSequence detects existing ID in nodeMap, ignores duplicate, returns false.
+        Document remains clean and uncorrupted.
+      </expected_results>
+      <type>Fault Tolerance</type>
+    </testcase>
+
+  </category>
+
+  <!-- ==================================================================== -->
+  <!-- SUITE 2: CONNECTION STATE MANAGER & MUTATION QUEUE                    -->
+  <!-- ==================================================================== -->
+  <category name="Connection State Management &amp; Offline Queue" priority="P0_BLOCKER">
+
+    <testcase id="TC-CONN-001" name="Optimistic Local Update Latency (0ms Perceived Lag)">
+      <objective>Verify user actions render in UI immediately without waiting for server network response.</objective>
+      <preconditions>Client UI loaded and connected.</preconditions>
+      <steps>
+        <step number="1">User types character into code editor.</step>
+        <step number="2">Measure time between keydown and DOM render.</step>
+      </steps>
+      <expected_results>
+        Perceived UI render latency &lt; 5ms. 
+        Mutation assigned monotonic opId and queued in pendingMutationQueue.
+      </expected_results>
+      <type>Performance / UX</type>
+    </testcase>
+
+    <testcase id="TC-CONN-002" name="Offline Mutation Queue Accumulation During Socket Dropout">
+      <objective>Verify edits accumulate in memory and localStorage when connection is severed.</objective>
+      <preconditions>Active WebSocket connection to Node 1.</preconditions>
+      <steps>
+        <step number="1">Click 'Sever Socket Connection' in Chaos Lab.</step>
+        <step number="2">Verify status pill changes to 'OFFLINE (0 QUEUED)'.</step>
+        <step number="3">Type 5 characters in the editor.</step>
+      </steps>
+      <expected_results>
+        Status pill updates to 'OFFLINE (5 QUEUED)'.
+        Queue inspector displays 5 unacknowledged mutations with timestamps.
+      </expected_results>
+      <type>Resilience / Offline-First</type>
+    </testcase>
+
+    <testcase id="TC-CONN-003" name="Exponential Backoff Reconnect with Jitter">
+      <objective>Verify reconnection attempts back off exponentially to avoid thundering herd.</objective>
+      <preconditions>Server is temporarily unreachable.</preconditions>
+      <steps>
+        <step number="1">Trigger unexpected socket disconnect.</step>
+        <step number="2">Record timestamps of reconnection attempts #1, #2, #3, #4.</step>
+      </steps>
+      <expected_results>
+        Delays scale geometrically: baseDelay * 1.5^attempt + jitter.
+        No runaway tight loops or infinite socket spam.
+      </expected_results>
+      <type>Network Stability</type>
+    </testcase>
+
+    <testcase id="TC-CONN-004" name="Reconnection Batch Catch-up and Queue Reconciliation">
+      <objective>Verify all queued mutations flush and reconcile upon reconnection without data loss.</objective>
+      <preconditions>Client offline with 5 pending mutations in queue.</preconditions>
+      <steps>
+        <step number="1">Click 'Reconnect &amp; Flush Queue'.</step>
+        <step number="2">Client opens WebSocket and dispatches 'offline_catchup' batch payload.</step>
+        <step number="3">Server applies all mutations and returns 'batch_ack'.</step>
+      </steps>
+      <expected_results>
+        pendingMutationQueue counter decrements to 0.
+        All peer clients receive flushed mutations and converge.
+      </expected_results>
+      <type>Reconciliation</type>
+    </testcase>
+
+    <testcase id="TC-CONN-005" name="Artificial Latency Injection Tolerance">
+      <objective>Verify system functions smoothly under severe high-latency conditions.</objective>
+      <preconditions>Chaos simulator latency slider set to 1000ms.</preconditions>
+      <steps>
+        <step number="1">Type text in Window A.</step>
+        <step number="2">Observe delayed propagation to Window B.</step>
+      </steps>
+      <expected_results>
+        Window A remains snappy (0ms). 
+        Window B integrates changes after 1000ms delay without cursor jumps or lost characters.
+      </expected_results>
+      <type>Chaos Engineering</type>
+    </testcase>
+
+    <testcase id="TC-CONN-006" name="Simulated Packet Loss Recovery">
+      <objective>Verify state convergence under simulated 30% packet drop rate.</objective>
+      <preconditions>Chaos simulator packet loss set to 30%.</preconditions>
+      <steps>
+        <step number="1">Perform concurrent edits across two windows.</step>
+        <step number="2">Allow background retries and ACKs to resolve dropped frames.</step>
+      </steps>
+      <expected_results>
+        Checksums on both windows match once all frames settle.
+      </expected_results>
+      <type>Chaos Engineering</type>
+    </testcase>
+
+  </category>
+
+  <!-- ==================================================================== -->
+  <!-- SUITE 3: MULTI-NODE REDIS PUB/SUB EVENT BUS SCALING                  -->
+  <!-- ==================================================================== -->
+  <category name="Multi-Node Event Bus Scaling" priority="P0_BLOCKER">
+
+    <testcase id="TC-BUS-001" name="Cross-Node WebSocket Synchronization">
+      <objective>Verify mutations from Node 1 (port 4001) propagate to Node 2 (port 4002) via Event Bus.</objective>
+      <preconditions>Client 1 connected to Node 1. Client 2 connected to Node 2.</preconditions>
+      <steps>
+        <step number="1">Client 1 sends RGA mutation over ws://localhost:4001.</step>
+        <step number="2">Node 1 publishes mutation to Event Bus channel 'collab:room:general'.</step>
+        <step number="3">Node 2 receives event from bus and forwards to Client 2 over ws://localhost:4002.</step>
+      </steps>
+      <expected_results>
+        Client 2 receives mutation within 50ms.
+        Both clients reflect the exact same document state.
+      </expected_results>
+      <type>Integration / Distributed</type>
+    </testcase>
+
+    <testcase id="TC-BUS-002" name="Event Bus Fallback to Embedded Cluster Bus">
+      <objective>Verify system gracefully falls back to local cluster bus when external Redis is absent.</objective>
+      <preconditions>Redis daemon not running on localhost:6379.</preconditions>
+      <steps>
+        <step number="1">Boot cluster via cluster.js.</step>
+        <step number="2">Inspect server initialization logs.</step>
+      </steps>
+      <expected_results>
+        Logs indicate: 'Redis not detected. Using Embedded Cluster Bus.'
+        Both nodes start cleanly with zero fatal crashes and full cross-node synchronization.
+      </expected_results>
+      <type>Resilience / Configuration</type>
+    </testcase>
+
+    <testcase id="TC-BUS-003" name="Live Client Node Migration / Failover">
+      <objective>Verify client can switch connected server nodes mid-session without data loss.</objective>
+      <preconditions>Client connected to Node 1 (:4001).</preconditions>
+      <steps>
+        <step number="1">Select 'Node 2 (Port 4002)' from dropdown.</step>
+        <step number="2">Click 'Switch Node'.</step>
+      </steps>
+      <expected_results>
+        WebSocket disconnects from port 4001 and reconnects to port 4002.
+        Fresh room snapshot is received and reconciled.
+        Editor and Canvas retain full state.
+      </expected_results>
+      <type>Failover / High Availability</type>
+    </testcase>
+
+  </category>
+
+  <!-- ==================================================================== -->
+  <!-- SUITE 4: END-TO-END CONVERGENCE & CHECKSUM VERIFICATION              -->
+  <!-- ==================================================================== -->
+  <category name="State Convergence Verification" priority="P0_BLOCKER">
+
+    <testcase id="TC-SYS-001" name="Multi-Window Strong Eventual Consistency CRC Match">
+      <objective>Verify CRC checksum matches identically across multiple independent client replicas.</objective>
+      <preconditions>Two browser sessions active on Node 1 and Node 2.</preconditions>
+      <steps>
+        <step number="1">Perform concurrent text edits and canvas card drags in both windows.</step>
+        <step number="2">Stop editing and wait 500ms for network quiescence.</step>
+        <step number="3">Compare CRC checksum values in the top header bar of both windows.</step>
+      </steps>
+      <expected_results>
+        Both windows display the exact identical CRC checksum (e.g., #3d8a4f91).
+        Visual text and canvas card coordinates are byte-identical.
+      </expected_results>
+      <type>System End-to-End</type>
+    </testcase>
+
+  </category>
+</testsuite>
