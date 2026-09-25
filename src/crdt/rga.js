@@ -222,4 +222,8 @@ export class RgaSequence {
     this.head = this.nodes[0] || new RgaNode('__HEAD__', '', null, -1, 'SYSTEM');
     this.clock.update(snapshot.clock || 0);
   }
+
+  loadSnapshot(snapshot) {
+    return this.loadStateSnapshot(snapshot);
+  }
 }

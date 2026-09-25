@@ -1,0 +1,2408 @@
+{
+  "roomId": "general",
+  "updatedAt": 1790319223457,
+  "rga": {
+    "siteId": "server-cluster-node-1",
+    "clock": 290,
+    "nodes": [
+      {
+        "id": "__HEAD__",
+        "value": "",
+        "originLeftId": null,
+        "clock": -1,
+        "siteId": "SYSTEM",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:1",
+        "value": "/",
+        "originLeftId": "__HEAD__",
+        "clock": 1,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:2",
+        "value": "/",
+        "originLeftId": "server-cluster-node-1:1",
+        "clock": 2,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:3",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:2",
+        "clock": 3,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:4",
+        "value": "D",
+        "originLeftId": "server-cluster-node-1:3",
+        "clock": 4,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:5",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:4",
+        "clock": 5,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:6",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:5",
+        "clock": 6,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:7",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:6",
+        "clock": 7,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:8",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:7",
+        "clock": 8,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:9",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:8",
+        "clock": 9,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:10",
+        "value": "b",
+        "originLeftId": "server-cluster-node-1:9",
+        "clock": 10,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:11",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:10",
+        "clock": 11,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:12",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:11",
+        "clock": 12,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:13",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:12",
+        "clock": 13,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:14",
+        "value": "d",
+        "originLeftId": "server-cluster-node-1:13",
+        "clock": 14,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:15",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:14",
+        "clock": 15,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:16",
+        "value": "R",
+        "originLeftId": "server-cluster-node-1:15",
+        "clock": 16,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:17",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:16",
+        "clock": 17,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:18",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:17",
+        "clock": 18,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:19",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:18",
+        "clock": 19,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:20",
+        "value": "-",
+        "originLeftId": "server-cluster-node-1:19",
+        "clock": 20,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:21",
+        "value": "T",
+        "originLeftId": "server-cluster-node-1:20",
+        "clock": 21,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:22",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:21",
+        "clock": 22,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:23",
+        "value": "m",
+        "originLeftId": "server-cluster-node-1:22",
+        "clock": 23,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:24",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:23",
+        "clock": 24,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:25",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:24",
+        "clock": 25,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:26",
+        "value": "C",
+        "originLeftId": "server-cluster-node-1:25",
+        "clock": 26,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:27",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:26",
+        "clock": 27,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:28",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:27",
+        "clock": 28,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:29",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:28",
+        "clock": 29,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:30",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:29",
+        "clock": 30,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:31",
+        "value": "b",
+        "originLeftId": "server-cluster-node-1:30",
+        "clock": 31,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:32",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:31",
+        "clock": 32,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:33",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:32",
+        "clock": 33,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:34",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:33",
+        "clock": 34,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:35",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:34",
+        "clock": 35,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:36",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:35",
+        "clock": 36,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:37",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:36",
+        "clock": 37,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:38",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:37",
+        "clock": 38,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:39",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:38",
+        "clock": 39,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:40",
+        "value": "E",
+        "originLeftId": "server-cluster-node-1:39",
+        "clock": 40,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:41",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:40",
+        "clock": 41,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:42",
+        "value": "g",
+        "originLeftId": "server-cluster-node-1:41",
+        "clock": 42,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:43",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:42",
+        "clock": 43,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:44",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:43",
+        "clock": 44,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:45",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:44",
+        "clock": 45,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:46",
+        "value": "\n",
+        "originLeftId": "server-cluster-node-1:45",
+        "clock": 46,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:47",
+        "value": "/",
+        "originLeftId": "server-cluster-node-1:46",
+        "clock": 47,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:48",
+        "value": "/",
+        "originLeftId": "server-cluster-node-1:47",
+        "clock": 48,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:49",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:48",
+        "clock": 49,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:50",
+        "value": "C",
+        "originLeftId": "server-cluster-node-1:49",
+        "clock": 50,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:51",
+        "value": "R",
+        "originLeftId": "server-cluster-node-1:50",
+        "clock": 51,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:52",
+        "value": "D",
+        "originLeftId": "server-cluster-node-1:51",
+        "clock": 52,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:53",
+        "value": "T",
+        "originLeftId": "server-cluster-node-1:52",
+        "clock": 53,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:54",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:53",
+        "clock": 54,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:55",
+        "value": "(",
+        "originLeftId": "server-cluster-node-1:54",
+        "clock": 55,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:56",
+        "value": "R",
+        "originLeftId": "server-cluster-node-1:55",
+        "clock": 56,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:57",
+        "value": "G",
+        "originLeftId": "server-cluster-node-1:56",
+        "clock": 57,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:58",
+        "value": "A",
+        "originLeftId": "server-cluster-node-1:57",
+        "clock": 58,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:59",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:58",
+        "clock": 59,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:60",
+        "value": "+",
+        "originLeftId": "server-cluster-node-1:59",
+        "clock": 60,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:61",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:60",
+        "clock": 61,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:62",
+        "value": "L",
+        "originLeftId": "server-cluster-node-1:61",
+        "clock": 62,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:63",
+        "value": "W",
+        "originLeftId": "server-cluster-node-1:62",
+        "clock": 63,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:64",
+        "value": "W",
+        "originLeftId": "server-cluster-node-1:63",
+        "clock": 64,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:65",
+        "value": "-",
+        "originLeftId": "server-cluster-node-1:64",
+        "clock": 65,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:66",
+        "value": "M",
+        "originLeftId": "server-cluster-node-1:65",
+        "clock": 66,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:67",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:66",
+        "clock": 67,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:68",
+        "value": "p",
+        "originLeftId": "server-cluster-node-1:67",
+        "clock": 68,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:69",
+        "value": ")",
+        "originLeftId": "server-cluster-node-1:68",
+        "clock": 69,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:70",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:69",
+        "clock": 70,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:71",
+        "value": "w",
+        "originLeftId": "server-cluster-node-1:70",
+        "clock": 71,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:72",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:71",
+        "clock": 72,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:73",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:72",
+        "clock": 73,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:74",
+        "value": "h",
+        "originLeftId": "server-cluster-node-1:73",
+        "clock": 74,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:75",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:74",
+        "clock": 75,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:76",
+        "value": "M",
+        "originLeftId": "server-cluster-node-1:75",
+        "clock": 76,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:77",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:76",
+        "clock": 77,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:78",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:77",
+        "clock": 78,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:79",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:78",
+        "clock": 79,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:80",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:79",
+        "clock": 80,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:81",
+        "value": "-",
+        "originLeftId": "server-cluster-node-1:80",
+        "clock": 81,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:82",
+        "value": "N",
+        "originLeftId": "server-cluster-node-1:81",
+        "clock": 82,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:83",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:82",
+        "clock": 83,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:84",
+        "value": "d",
+        "originLeftId": "server-cluster-node-1:83",
+        "clock": 84,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:85",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:84",
+        "clock": 85,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:86",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:85",
+        "clock": 86,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:87",
+        "value": "R",
+        "originLeftId": "server-cluster-node-1:86",
+        "clock": 87,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:88",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:87",
+        "clock": 88,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:89",
+        "value": "d",
+        "originLeftId": "server-cluster-node-1:88",
+        "clock": 89,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:90",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:89",
+        "clock": 90,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:91",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:90",
+        "clock": 91,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:92",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:91",
+        "clock": 92,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:93",
+        "value": "S",
+        "originLeftId": "server-cluster-node-1:92",
+        "clock": 93,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:94",
+        "value": "y",
+        "originLeftId": "server-cluster-node-1:93",
+        "clock": 94,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:95",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:94",
+        "clock": 95,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:96",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:95",
+        "clock": 96,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:97",
+        "value": "\n",
+        "originLeftId": "server-cluster-node-1:96",
+        "clock": 97,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:98",
+        "value": "\n",
+        "originLeftId": "server-cluster-node-1:97",
+        "clock": 98,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:99",
+        "value": "f",
+        "originLeftId": "server-cluster-node-1:98",
+        "clock": 99,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:100",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:99",
+        "clock": 100,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:101",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:100",
+        "clock": 101,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:102",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:101",
+        "clock": 102,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:103",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:102",
+        "clock": 103,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:104",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:103",
+        "clock": 104,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:105",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:104",
+        "clock": 105,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:106",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:105",
+        "clock": 106,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:107",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:106",
+        "clock": 107,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:108",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:107",
+        "clock": 108,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:109",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:108",
+        "clock": 109,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:110",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:109",
+        "clock": 110,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:111",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:110",
+        "clock": 111,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:112",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:111",
+        "clock": 112,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:113",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:112",
+        "clock": 113,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:114",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:113",
+        "clock": 114,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:115",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:114",
+        "clock": 115,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:116",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:115",
+        "clock": 116,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:117",
+        "value": "C",
+        "originLeftId": "server-cluster-node-1:116",
+        "clock": 117,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:118",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:117",
+        "clock": 118,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:119",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:118",
+        "clock": 119,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:120",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:119",
+        "clock": 120,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:121",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:120",
+        "clock": 121,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:122",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:121",
+        "clock": 122,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:123",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:122",
+        "clock": 123,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:124",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:123",
+        "clock": 124,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:125",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:124",
+        "clock": 125,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:126",
+        "value": "(",
+        "originLeftId": "server-cluster-node-1:125",
+        "clock": 126,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:127",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:126",
+        "clock": 127,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:128",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:127",
+        "clock": 128,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:129",
+        "value": "p",
+        "originLeftId": "server-cluster-node-1:128",
+        "clock": 129,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:130",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:129",
+        "clock": 130,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:131",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:130",
+        "clock": 131,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:132",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:131",
+        "clock": 132,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:133",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:132",
+        "clock": 133,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:134",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:133",
+        "clock": 134,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:135",
+        "value": ")",
+        "originLeftId": "server-cluster-node-1:134",
+        "clock": 135,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:136",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:135",
+        "clock": 136,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:137",
+        "value": "{",
+        "originLeftId": "server-cluster-node-1:136",
+        "clock": 137,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:138",
+        "value": "\n",
+        "originLeftId": "server-cluster-node-1:137",
+        "clock": 138,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:139",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:138",
+        "clock": 139,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:140",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:139",
+        "clock": 140,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:141",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:140",
+        "clock": 141,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:142",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:141",
+        "clock": 142,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:143",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:142",
+        "clock": 143,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:144",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:143",
+        "clock": 144,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:145",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:144",
+        "clock": 145,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:146",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:145",
+        "clock": 146,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:147",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:146",
+        "clock": 147,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:148",
+        "value": ".",
+        "originLeftId": "server-cluster-node-1:147",
+        "clock": 148,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:149",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:148",
+        "clock": 149,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:150",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:149",
+        "clock": 150,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:151",
+        "value": "g",
+        "originLeftId": "server-cluster-node-1:150",
+        "clock": 151,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:152",
+        "value": "(",
+        "originLeftId": "server-cluster-node-1:151",
+        "clock": 152,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:153",
+        "value": "\"",
+        "originLeftId": "server-cluster-node-1:152",
+        "clock": 153,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:154",
+        "value": "A",
+        "originLeftId": "server-cluster-node-1:153",
+        "clock": 154,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:155",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:154",
+        "clock": 155,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:156",
+        "value": "h",
+        "originLeftId": "server-cluster-node-1:155",
+        "clock": 156,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:157",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:156",
+        "clock": 157,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:158",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:157",
+        "clock": 158,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:159",
+        "value": "v",
+        "originLeftId": "server-cluster-node-1:158",
+        "clock": 159,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:160",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:159",
+        "clock": 160,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:161",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:160",
+        "clock": 161,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:162",
+        "value": "g",
+        "originLeftId": "server-cluster-node-1:161",
+        "clock": 162,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:163",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:162",
+        "clock": 163,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:164",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:163",
+        "clock": 164,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:165",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:164",
+        "clock": 165,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:166",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:165",
+        "clock": 166,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:167",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:166",
+        "clock": 167,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:168",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:167",
+        "clock": 168,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:169",
+        "value": "g",
+        "originLeftId": "server-cluster-node-1:168",
+        "clock": 169,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:170",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:169",
+        "clock": 170,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:171",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:170",
+        "clock": 171,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:172",
+        "value": "v",
+        "originLeftId": "server-cluster-node-1:171",
+        "clock": 172,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:173",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:172",
+        "clock": 173,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:174",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:173",
+        "clock": 174,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:175",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:174",
+        "clock": 175,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:176",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:175",
+        "clock": 176,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:177",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:176",
+        "clock": 177,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:178",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:177",
+        "clock": 178,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:179",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:178",
+        "clock": 179,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:180",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:179",
+        "clock": 180,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:181",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:180",
+        "clock": 181,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:182",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:181",
+        "clock": 182,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:183",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:182",
+        "clock": 183,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:184",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:183",
+        "clock": 184,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:185",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:184",
+        "clock": 185,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:186",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:185",
+        "clock": 186,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:187",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:186",
+        "clock": 187,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:188",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:187",
+        "clock": 188,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:189",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:188",
+        "clock": 189,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:190",
+        "value": "y",
+        "originLeftId": "server-cluster-node-1:189",
+        "clock": 190,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:191",
+        "value": ".",
+        "originLeftId": "server-cluster-node-1:190",
+        "clock": 191,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:192",
+        "value": ".",
+        "originLeftId": "server-cluster-node-1:191",
+        "clock": 192,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:193",
+        "value": ".",
+        "originLeftId": "server-cluster-node-1:192",
+        "clock": 193,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:194",
+        "value": "\"",
+        "originLeftId": "server-cluster-node-1:193",
+        "clock": 194,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:195",
+        "value": ")",
+        "originLeftId": "server-cluster-node-1:194",
+        "clock": 195,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:196",
+        "value": ";",
+        "originLeftId": "server-cluster-node-1:195",
+        "clock": 196,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:197",
+        "value": "\n",
+        "originLeftId": "server-cluster-node-1:196",
+        "clock": 197,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:198",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:197",
+        "clock": 198,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:199",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:198",
+        "clock": 199,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:200",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:199",
+        "clock": 200,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:201",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:200",
+        "clock": 201,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:202",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:201",
+        "clock": 202,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:203",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:202",
+        "clock": 203,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:204",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:203",
+        "clock": 204,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:205",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:204",
+        "clock": 205,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:206",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:205",
+        "clock": 206,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:207",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:206",
+        "clock": 207,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:208",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:207",
+        "clock": 208,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:209",
+        "value": "p",
+        "originLeftId": "server-cluster-node-1:208",
+        "clock": 209,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:210",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:209",
+        "clock": 210,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:211",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:210",
+        "clock": 211,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:212",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:211",
+        "clock": 212,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:213",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:212",
+        "clock": 213,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:214",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:213",
+        "clock": 214,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:215",
+        "value": ".",
+        "originLeftId": "server-cluster-node-1:214",
+        "clock": 215,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:216",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:215",
+        "clock": 216,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:217",
+        "value": "v",
+        "originLeftId": "server-cluster-node-1:216",
+        "clock": 217,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:218",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:217",
+        "clock": 218,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:219",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:218",
+        "clock": 219,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:220",
+        "value": "y",
+        "originLeftId": "server-cluster-node-1:219",
+        "clock": 220,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:221",
+        "value": "(",
+        "originLeftId": "server-cluster-node-1:220",
+        "clock": 221,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:222",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:221",
+        "clock": 222,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:223",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:222",
+        "clock": 223,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:224",
+        "value": "=",
+        "originLeftId": "server-cluster-node-1:223",
+        "clock": 224,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:225",
+        "value": ">",
+        "originLeftId": "server-cluster-node-1:224",
+        "clock": 225,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:226",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:225",
+        "clock": 226,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:227",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:226",
+        "clock": 227,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:228",
+        "value": ".",
+        "originLeftId": "server-cluster-node-1:227",
+        "clock": 228,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:229",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:228",
+        "clock": 229,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:230",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:229",
+        "clock": 230,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:231",
+        "value": "C",
+        "originLeftId": "server-cluster-node-1:230",
+        "clock": 231,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:232",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:231",
+        "clock": 232,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:233",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:232",
+        "clock": 233,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:234",
+        "value": "v",
+        "originLeftId": "server-cluster-node-1:233",
+        "clock": 234,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:235",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:234",
+        "clock": 235,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:236",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:235",
+        "clock": 236,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:237",
+        "value": "g",
+        "originLeftId": "server-cluster-node-1:236",
+        "clock": 237,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:238",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:237",
+        "clock": 238,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:239",
+        "value": "d",
+        "originLeftId": "server-cluster-node-1:238",
+        "clock": 239,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:240",
+        "value": ")",
+        "originLeftId": "server-cluster-node-1:239",
+        "clock": 240,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:241",
+        "value": ";",
+        "originLeftId": "server-cluster-node-1:240",
+        "clock": 241,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:242",
+        "value": "\n",
+        "originLeftId": "server-cluster-node-1:241",
+        "clock": 242,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:243",
+        "value": "}",
+        "originLeftId": "server-cluster-node-1:242",
+        "clock": 243,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:244",
+        "value": "\n",
+        "originLeftId": "server-cluster-node-1:243",
+        "clock": 244,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:245",
+        "value": "\n",
+        "originLeftId": "server-cluster-node-1:244",
+        "clock": 245,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:246",
+        "value": "/",
+        "originLeftId": "server-cluster-node-1:245",
+        "clock": 246,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:247",
+        "value": "/",
+        "originLeftId": "server-cluster-node-1:246",
+        "clock": 247,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:248",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:247",
+        "clock": 248,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:249",
+        "value": "E",
+        "originLeftId": "server-cluster-node-1:248",
+        "clock": 249,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:250",
+        "value": "d",
+        "originLeftId": "server-cluster-node-1:249",
+        "clock": 250,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:251",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:250",
+        "clock": 251,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:252",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:251",
+        "clock": 252,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:253",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:252",
+        "clock": 253,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:254",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:253",
+        "clock": 254,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:255",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:254",
+        "clock": 255,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:256",
+        "value": "m",
+        "originLeftId": "server-cluster-node-1:255",
+        "clock": 256,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:257",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:256",
+        "clock": 257,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:258",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:257",
+        "clock": 258,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:259",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:258",
+        "clock": 259,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:260",
+        "value": "a",
+        "originLeftId": "server-cluster-node-1:259",
+        "clock": 260,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:261",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:260",
+        "clock": 261,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:262",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:261",
+        "clock": 262,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:263",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:262",
+        "clock": 263,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:264",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:263",
+        "clock": 264,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:265",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:264",
+        "clock": 265,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:266",
+        "value": "l",
+        "originLeftId": "server-cluster-node-1:265",
+        "clock": 266,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:267",
+        "value": "y",
+        "originLeftId": "server-cluster-node-1:266",
+        "clock": 267,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:268",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:267",
+        "clock": 268,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:269",
+        "value": "w",
+        "originLeftId": "server-cluster-node-1:268",
+        "clock": 269,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:270",
+        "value": "i",
+        "originLeftId": "server-cluster-node-1:269",
+        "clock": 270,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:271",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:270",
+        "clock": 271,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:272",
+        "value": "h",
+        "originLeftId": "server-cluster-node-1:271",
+        "clock": 272,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:273",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:272",
+        "clock": 273,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:274",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:273",
+        "clock": 274,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:275",
+        "value": "o",
+        "originLeftId": "server-cluster-node-1:274",
+        "clock": 275,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:276",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:275",
+        "clock": 276,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:277",
+        "value": "c",
+        "originLeftId": "server-cluster-node-1:276",
+        "clock": 277,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:278",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:277",
+        "clock": 278,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:279",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:278",
+        "clock": 279,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:280",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:279",
+        "clock": 280,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:281",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:280",
+        "clock": 281,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:282",
+        "value": "n",
+        "originLeftId": "server-cluster-node-1:281",
+        "clock": 282,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:283",
+        "value": "t",
+        "originLeftId": "server-cluster-node-1:282",
+        "clock": 283,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:284",
+        "value": " ",
+        "originLeftId": "server-cluster-node-1:283",
+        "clock": 284,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:285",
+        "value": "u",
+        "originLeftId": "server-cluster-node-1:284",
+        "clock": 285,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:286",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:285",
+        "clock": 286,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:287",
+        "value": "e",
+        "originLeftId": "server-cluster-node-1:286",
+        "clock": 287,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:288",
+        "value": "r",
+        "originLeftId": "server-cluster-node-1:287",
+        "clock": 288,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:289",
+        "value": "s",
+        "originLeftId": "server-cluster-node-1:288",
+        "clock": 289,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      },
+      {
+        "id": "server-cluster-node-1:290",
+        "value": "!",
+        "originLeftId": "server-cluster-node-1:289",
+        "clock": 290,
+        "siteId": "server-cluster-node-1",
+        "deleted": false
+      }
+    ]
+  },
+  "canvas": {
+    "siteId": "server-cluster-node-1",
+    "clock": 345,
+    "entries": {
+      "card-welcome": {
+        "value": {
+          "id": "card-welcome",
+          "type": "card",
+          "title": "Distributed State Sync",
+          "text": "Horizontal scaling via Redis Pub/Sub across port 4001, 4002 & 4003.",
+          "x": 49,
+          "y": 87,
+          "color": "#3b82f6",
+          "author": "System"
+        },
+        "timestamp": 230,
+        "siteId": "peer_qjso",
+        "deleted": false
+      },
+      "card-crdt": {
+        "value": {
+          "id": "card-crdt",
+          "type": "card",
+          "title": "CRDT Math Guarantee",
+          "text": "sadaSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+          "x": 307,
+          "y": 90,
+          "color": "#10b981",
+          "author": "System"
+        },
+        "timestamp": 344,
+        "siteId": "peer_qjso",
+        "deleted": false
+      },
+      "item_1790319196526_vhxk": {
+        "value": null,
+        "timestamp": 233,
+        "siteId": "peer_qjso",
+        "deleted": true
+      },
+      "item_1790319196527_3khc": {
+        "value": null,
+        "timestamp": 234,
+        "siteId": "peer_qjso",
+        "deleted": true
+      },
+      "item_1790319205398_i3xx": {
+        "value": null,
+        "timestamp": 239,
+        "siteId": "peer_qjso",
+        "deleted": true
+      },
+      "item_1790319206294_wyzz": {
+        "value": null,
+        "timestamp": 238,
+        "siteId": "peer_qjso",
+        "deleted": true
+      }
+    }
+  },
+  "chat": [
+    {
+      "id": "sys-welcome",
+      "senderId": "SYSTEM",
+      "senderName": "System",
+      "senderColor": "#38bdf8",
+      "text": "Room \"general\" initialized on cluster-node-1. Welcome to AetherSync!",
+      "timestamp": 1790319067446
+    }
+  ]
+}

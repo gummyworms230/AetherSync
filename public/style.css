@@ -601,17 +601,22 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
-/* Canvas Item Cards (LWW-Map Synchronized) */
+/* Canvas Item Cards (LWW-Map Synchronized with Adjustable Size) */
 .canvas-item {
   position: absolute;
-  width: 230px;
-  background: rgba(22, 29, 46, 0.9);
+  min-width: 150px;
+  min-height: 120px;
+  background: rgba(22, 29, 46, 0.92);
   backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   cursor: grab;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
   transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
@@ -621,12 +626,20 @@ body {
   z-index: 100;
 }
 
+.canvas-item.resizing {
+  cursor: nwse-resize !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 18px var(--accent-cyan-glow) !important;
+  user-select: none !important;
+  z-index: 105 !important;
+}
+
 .canvas-item-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
 }
 
 .canvas-item-title {
@@ -650,29 +663,61 @@ body {
 }
 
 .canvas-item-body {
-  padding: 10px 12px;
+  padding: 8px 12px;
+  flex: 1;
+  display: flex;
+  min-height: 0;
 }
 
 .canvas-item-textarea {
   width: 100%;
+  height: 100%;
   background: transparent;
   border: none;
   outline: none;
   resize: none;
   color: var(--text-secondary);
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   line-height: 1.4;
-  height: 60px;
+  box-sizing: border-box;
 }
 
 .canvas-item-footer {
-  padding: 4px 12px 8px 12px;
+  padding: 4px 20px 6px 12px;
   font-size: 0.65rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.canvas-item-dim {
+  color: var(--text-muted);
+  font-size: 0.62rem;
+}
+
+/* Custom Resize Handle in bottom-right corner */
+.canvas-item-resizer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+  z-index: 10;
+  background: linear-gradient(135deg, transparent 50%, var(--accent-cyan) 50%);
+  opacity: 0.65;
+  border-bottom-right-radius: calc(var(--radius-md) - 1px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.canvas-item:hover .canvas-item-resizer {
+  opacity: 1;
+  transform: scale(1.15);
 }
 
 /* ==========================================================================

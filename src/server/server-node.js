@@ -84,6 +84,8 @@ export class Room {
       text: 'Horizontal scaling via Redis Pub/Sub across port 4001, 4002 & 4003.',
       x: 60,
       y: 80,
+      width: 260,
+      height: 170,
       color: '#3b82f6',
       author: 'System'
     });
@@ -95,6 +97,8 @@ export class Room {
       text: 'RGA sequence for text & LWW-Map with Lamport clocks.',
       x: 380,
       y: 120,
+      width: 260,
+      height: 170,
       color: '#10b981',
       author: 'System'
     });

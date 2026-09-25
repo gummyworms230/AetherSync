@@ -780,13 +780,17 @@ class AetherApp {
   _createCanvasItem(type = 'note') {
     const id = `item_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
     const isService = type === 'service';
+    const defaultW = isService ? 260 : 220;
+    const defaultH = isService ? 170 : 150;
     const item = {
       id,
       type,
-      title: isService ? 'Redis Node' : 'Quick Note',
+      title: isService ? 'Service Node' : 'Sticky Note',
       text: isService ? 'Pub/Sub Ingress Channel' : 'Collaborative thought...',
       x: 100 + Math.floor(Math.random() * 200),
       y: 100 + Math.floor(Math.random() * 200),
+      width: defaultW,
+      height: defaultH,
       color: isService ? '#8b5cf6' : '#38bdf8',
       author: this.userName
     };
@@ -803,28 +807,42 @@ class AetherApp {
 
     for (const [id, item] of Object.entries(items)) {
       if (!item) continue;
+      const isService = item.type === 'service';
+      const defaultW = isService ? 260 : 220;
+      const defaultH = isService ? 170 : 150;
+      const width = item.width || defaultW;
+      const height = item.height || defaultH;
+
       const el = document.createElement('div');
       el.className = 'canvas-item';
       el.id = `canvas-item-${id}`;
       el.style.left = `${item.x}px`;
       el.style.top = `${item.y}px`;
+      el.style.width = `${width}px`;
+      el.style.height = `${height}px`;
       el.style.borderColor = item.color || '#38bdf8';
 
       el.innerHTML = `
         <div class="canvas-item-header" style="background: ${item.color}22">
-          <span class="canvas-item-title">${item.title || 'Note'}</span>
+          <span class="canvas-item-title">${item.title || (isService ? 'Service Node' : 'Sticky Note')}</span>
           <button class="canvas-item-del" title="Delete" data-id="${id}">&times;</button>
         </div>
         <div class="canvas-item-body">
-          <textarea class="canvas-item-textarea" data-id="${id}">${item.text || ''}</textarea>
+          <textarea class="canvas-item-textarea" data-id="${id}" placeholder="Type details...">${item.text || ''}</textarea>
         </div>
         <div class="canvas-item-footer">
           <span>Author: ${item.author || 'Peer'}</span>
-          <span>${item.x}px, ${item.y}px</span>
+          <span class="canvas-item-dim">${width} &times; ${height}px</span>
         </div>
+        <div class="canvas-item-resizer" title="Drag to adjust size" data-id="${id}"></div>
       `;
 
       this._wireItemDrag(el, id, item);
+
+      const resizerEl = el.querySelector('.canvas-item-resizer');
+      if (resizerEl) {
+        this._wireItemResize(resizerEl, el, id, item);
+      }
 
       const textarea = el.querySelector('.canvas-item-textarea');
       textarea.addEventListener('input', (e) => {
@@ -852,21 +870,19 @@ class AetherApp {
     let initialLeft = 0;
     let initialTop = 0;
 
-    const onMouseDown = (e) => {
-      if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON') return;
+    const onStart = (clientX, clientY) => {
       isDragging = true;
-      startX = e.clientX;
-      startY = e.clientY;
+      startX = clientX;
+      startY = clientY;
       initialLeft = item.x;
       initialTop = item.y;
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+      el.style.zIndex = '100';
     };
 
-    const onMouseMove = (e) => {
+    const onMove = (clientX, clientY) => {
       if (!isDragging) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
+      const dx = clientX - startX;
+      const dy = clientY - startY;
       const newX = Math.max(0, initialLeft + dx);
       const newY = Math.max(0, initialTop + dy);
 
@@ -879,16 +895,144 @@ class AetherApp {
       this.conn.submitMutation(op);
     };
 
-    const onMouseUp = () => {
+    const onEnd = () => {
       if (isDragging) {
-        this._recordMutation({ type: 'lww_set', key: id, value: item }, `Moved ${id}`);
+        el.style.zIndex = '';
+        this._recordMutation({ type: 'lww_set', key: id, value: item }, `Moved ${item.title || id}`);
       }
       isDragging = false;
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
     };
 
-    el.addEventListener('mousedown', onMouseDown);
+    // Mouse drag
+    el.addEventListener('mousedown', (e) => {
+      if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.classList.contains('canvas-item-resizer')) return;
+      onStart(e.clientX, e.clientY);
+
+      const onMouseMove = (ev) => onMove(ev.clientX, ev.clientY);
+      const onMouseUp = () => {
+        onEnd();
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+      };
+
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    });
+
+    // Touch drag for mobile/iPhone
+    el.addEventListener('touchstart', (e) => {
+      if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'BUTTON' || e.target.classList.contains('canvas-item-resizer')) return;
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        onStart(touch.clientX, touch.clientY);
+      }
+    }, { passive: true });
+
+    el.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        onMove(touch.clientX, touch.clientY);
+      }
+    }, { passive: true });
+
+    el.addEventListener('touchend', () => {
+      onEnd();
+    });
+  }
+
+  _wireItemResize(resizerEl, el, id, item) {
+    let isResizing = false;
+    let startX = 0;
+    let startY = 0;
+    let initialWidth = 0;
+    let initialHeight = 0;
+
+    const onStart = (clientX, clientY) => {
+      isResizing = true;
+      startX = clientX;
+      startY = clientY;
+      initialWidth = item.width || el.offsetWidth || 230;
+      initialHeight = item.height || el.offsetHeight || 160;
+      el.classList.add('resizing');
+    };
+
+    const onMove = (clientX, clientY) => {
+      if (!isResizing) return;
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+      const isService = item.type === 'service';
+      const minW = isService ? 180 : 150;
+      const minH = isService ? 140 : 120;
+      const maxW = 900;
+      const maxH = 900;
+
+      const newWidth = Math.min(maxW, Math.max(minW, Math.round(initialWidth + dx)));
+      const newHeight = Math.min(maxH, Math.max(minH, Math.round(initialHeight + dy)));
+
+      el.style.width = `${newWidth}px`;
+      el.style.height = `${newHeight}px`;
+      item.width = newWidth;
+      item.height = newHeight;
+
+      const dimSpan = el.querySelector('.canvas-item-dim');
+      if (dimSpan) {
+        dimSpan.textContent = `${newWidth} × ${newHeight}px`;
+      }
+
+      // Throttled CRDT LWW-Map mutation broadcast
+      const op = this.canvasMap.set(id, item);
+      this.conn.submitMutation(op);
+    };
+
+    const onEnd = () => {
+      if (isResizing) {
+        el.classList.remove('resizing');
+        this._recordMutation({ type: 'lww_set', key: id, value: item }, `Resized ${item.title || id}`);
+      }
+      isResizing = false;
+    };
+
+    // Mouse resize
+    resizerEl.addEventListener('mousedown', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      onStart(e.clientX, e.clientY);
+
+      const onMouseMove = (ev) => onMove(ev.clientX, ev.clientY);
+      const onMouseUp = () => {
+        onEnd();
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+      };
+
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    });
+
+    // Touch resize for mobile/iPhone
+    resizerEl.addEventListener('touchstart', (e) => {
+      e.stopPropagation();
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        onStart(touch.clientX, touch.clientY);
+      }
+    }, { passive: false });
+
+    resizerEl.addEventListener('touchmove', (e) => {
+      if (!isResizing) return;
+      e.stopPropagation();
+      e.preventDefault();
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        onMove(touch.clientX, touch.clientY);
+      }
+    }, { passive: false });
+
+    resizerEl.addEventListener('touchend', (e) => {
+      e.stopPropagation();
+      onEnd();
+    });
   }
 
   _resetCanvasDefaults() {

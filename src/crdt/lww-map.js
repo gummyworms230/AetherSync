@@ -144,4 +144,8 @@ export class LwwMap {
     }
     this.clock.update(snapshot.clock || 0);
   }
+
+  loadSnapshot(snapshot) {
+    return this.loadStateSnapshot(snapshot);
+  }
 }
