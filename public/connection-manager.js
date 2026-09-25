@@ -312,6 +312,60 @@ export class ConnectionManager {
         this.emit('presence', msg.presence);
         break;
       }
+
+      case 'chat_message': {
+        this.emit('chat_message', msg.message);
+        break;
+      }
+
+      case 'typing_indicator': {
+        this.emit('typing_indicator', msg);
+        break;
+      }
+    }
+  }
+
+  sendChat(text, senderName = 'You', senderColor = '#38bdf8') {
+    if (!text || !text.trim()) return;
+    this.sendRaw({
+      type: 'chat_message',
+      message: {
+        text: text.trim(),
+        senderName,
+        senderColor
+      }
+    });
+  }
+
+  sendTyping(isTyping, name = 'You') {
+    this.sendRaw({
+      type: 'typing_indicator',
+      isTyping: Boolean(isTyping),
+      name
+    });
+  }
+
+  switchRoom(newRoomId) {
+    if (!newRoomId || newRoomId === this.roomId) return;
+    this.roomId = newRoomId;
+    this.pendingMutationQueue = [];
+    this._persistQueue();
+    this.disconnect();
+    this.connect();
+  }
+
+  async togglePartition(targetPort, partitioned) {
+    const host = window.location.hostname || 'localhost';
+    try {
+      const res = await fetch(`http://${host}:${targetPort}/api/partition`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ partitioned })
+      });
+      return await res.json();
+    } catch (err) {
+      console.error(`[ConnectionManager] Failed setting partition on port ${targetPort}:`, err);
+      return { success: false, error: err.message };
     }
   }
 

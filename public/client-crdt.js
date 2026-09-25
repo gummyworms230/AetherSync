@@ -182,6 +182,35 @@ export class ClientRgaSequence {
     this.clock.update(snapshot.clock || 0);
   }
 
+  getActiveNodesWithAuthors() {
+    const list = [];
+    for (let i = 1; i < this.nodes.length; i++) {
+      if (!this.nodes[i].deleted) {
+        list.push({
+          value: this.nodes[i].value,
+          siteId: this.nodes[i].siteId,
+          clock: this.nodes[i].clock,
+          id: this.nodes[i].id
+        });
+      }
+    }
+    return list;
+  }
+
+  getStateSnapshot() {
+    return {
+      clock: this.clock.getTime(),
+      nodes: this.nodes.map(n => ({
+        id: n.id,
+        value: n.value,
+        originLeftId: n.originLeftId,
+        clock: n.clock,
+        siteId: n.siteId,
+        deleted: n.deleted
+      }))
+    };
+  }
+
   /**
    * Fast checksum calculation to verify convergence across clients
    */

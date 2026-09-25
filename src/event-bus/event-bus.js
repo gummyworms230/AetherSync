@@ -21,6 +21,17 @@ export class DistributedEventBus {
 
     this.publisher = null;
     this.subscriber = null;
+    this.isPartitioned = false;
+  }
+
+  setPartitioned(partitioned) {
+    this.isPartitioned = Boolean(partitioned);
+    console.log(`[${this.nodeId}] ⚡ Network partition status changed: partitioned=${this.isPartitioned}`);
+    clusterEmitter.emit('partition_change', { nodeId: this.nodeId, isPartitioned: this.isPartitioned });
+  }
+
+  getPartitioned() {
+    return this.isPartitioned;
   }
 
   async init() {
@@ -43,6 +54,7 @@ export class DistributedEventBus {
       this.useRedis = true;
 
       this.subscriber.on('message', (channel, message) => {
+        if (this.isPartitioned) return; // Drop incoming bus messages if partitioned
         try {
           const parsed = JSON.parse(message);
           // Don't echo back to sender node
@@ -66,6 +78,7 @@ export class DistributedEventBus {
 
       // Listen to clusterEmitter
       clusterEmitter.on('broadcast', (event) => {
+        if (this.isPartitioned) return; // Drop incoming bus messages if partitioned
         if (event.originNodeId === this.nodeId) return; // ignore own events
         const handlers = this.subscribers.get(event.channel);
         if (handlers) {
@@ -78,6 +91,11 @@ export class DistributedEventBus {
   }
 
   async publish(channel, payload) {
+    if (this.isPartitioned) {
+      // In a network partition, messages cannot leave this node
+      return;
+    }
+
     if (this.useRedis && this.publisher) {
       const msg = JSON.stringify({
         _originNodeId: this.nodeId,

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AetherSync // Distributed Real-Time CRDT State Engine</title>
-  <meta name="description" content="High-concurrency distributed real-time collaborative workspace with CRDTs, Connection State Manager, and Multi-Node Redis Pub/Sub event bus.">
+  <meta name="description" content="High-concurrency distributed real-time collaborative workspace with CRDTs, Connection State Manager, Multi-Node Redis Pub/Sub, and Multiplayer Presence.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,17 +22,24 @@
         <span class="engine-tag">CRDT + Multi-Node Engine</span>
       </div>
 
+      <!-- Room Routing Controls -->
+      <div class="room-selector-container">
+        <span class="room-hash-label">#</span>
+        <input id="room-input" type="text" class="custom-input room-input" value="general" title="Current room name (press Enter to switch)" placeholder="room-name" />
+        <button id="btn-switch-room" class="btn-compact" title="Switch or create room">Join</button>
+      </div>
+
       <!-- Cluster Node Routing Controls -->
       <div class="cluster-routing">
         <div class="node-selector-container">
-          <label for="node-select-dropdown" class="control-label">Connected Node:</label>
+          <label for="node-select-dropdown" class="control-label">Node:</label>
           <select id="node-select-dropdown" class="custom-select" title="Select target cluster node">
-            <option value="4001" selected>Node 1 (Port 4001)</option>
-            <option value="4002">Node 2 (Port 4002)</option>
-            <option value="4003">Node 3 (Port 4003)</option>
+            <option value="4001" selected>Node 1 (:4001)</option>
+            <option value="4002">Node 2 (:4002)</option>
+            <option value="4003">Node 3 (:4003)</option>
           </select>
           <button id="btn-switch-node" class="btn-compact" title="Migrate client to selected server node">
-            Switch Node
+            Switch
           </button>
         </div>
       </div>
@@ -61,14 +68,25 @@
         </div>
       </div>
 
-      <!-- Peer Avatars -->
-      <div class="peer-presence-section">
-        <div id="user-badge" class="user-pill">
-          <span id="user-color-dot" class="color-dot"></span>
-          <span id="username-display" class="user-name">You</span>
-        </div>
-        <div id="peer-avatars-container" class="avatar-stack" title="Connected Peers">
-          <!-- Dynamically populated -->
+      <!-- Header Tool Actions (History, Chat, User Presence) -->
+      <div class="header-actions-section">
+        <button id="btn-toggle-time-travel" class="btn-icon-action" title="Open Time-Travel History Playback">
+          <span>⏱️</span> <span class="action-btn-text">History</span>
+        </button>
+
+        <button id="btn-toggle-chat" class="btn-icon-action chat-btn-badge" title="Open Live Chat & Activity">
+          <span>💬</span> <span class="action-btn-text">Chat</span>
+          <span id="chat-unread-badge" class="badge-counter hidden">0</span>
+        </button>
+
+        <div class="peer-presence-section">
+          <div id="user-badge" class="user-pill" title="Your peer profile">
+            <span id="user-color-dot" class="color-dot"></span>
+            <span id="username-display" class="user-name">You</span>
+          </div>
+          <div id="peer-avatars-container" class="avatar-stack" title="Connected Peers">
+            <!-- Dynamically populated -->
+          </div>
         </div>
       </div>
     </header>
@@ -97,6 +115,12 @@
           </div>
           <div class="editor-actions">
             <span id="rga-char-stats" class="subbar-stat">Chars: 0 | Clocks: 0</span>
+            <button id="btn-toggle-blame" class="btn-subtle" title="Toggle color-coded author attribution">
+              <span>👤</span> Author Blame: <b id="blame-status-text">OFF</b>
+            </button>
+            <button id="btn-export-code" class="btn-subtle" title="Download text as Markdown file">
+              <span>📥</span> Export .md
+            </button>
             <button id="btn-copy-code" class="btn-subtle" title="Copy code content">Copy Text</button>
           </div>
         </div>
@@ -107,8 +131,10 @@
           </div>
           <div class="editor-input-area">
             <textarea id="code-editor-textarea" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="// Type code here to observe real-time CRDT synchronization across nodes..."></textarea>
-            <!-- Overlay for peer cursor carats -->
+            <!-- Overlay for peer cursor carats and selections -->
             <div id="peer-cursors-layer" class="peer-cursors-layer"></div>
+            <!-- Overlay for author blame coloring -->
+            <div id="editor-blame-layer" class="editor-blame-layer hidden"></div>
           </div>
         </div>
       </section>
@@ -123,12 +149,19 @@
             <button id="btn-add-service" class="btn-action btn-service">
               <span>+</span> Add Service Node
             </button>
+            <button id="btn-export-canvas" class="btn-subtle" title="Export canvas to JSON">
+              <span>📥</span> Export JSON
+            </button>
+            <button id="btn-import-canvas-trigger" class="btn-subtle" title="Import canvas from JSON">
+              <span>📤</span> Import JSON
+            </button>
+            <input type="file" id="canvas-file-input" accept=".json" style="display:none;" />
             <button id="btn-reset-canvas" class="btn-subtle">
               Reset Layout
             </button>
           </div>
           <div class="canvas-hint">
-            <span class="hint-bullet">💡</span> Drag items freely. Concurrent movements resolve via LWW-Map with Lamport clocks.
+            <span class="hint-bullet">💡</span> Live multiplayer cursors active. Drag items freely; concurrent updates resolve via LWW-Map.
           </div>
         </div>
 
@@ -136,6 +169,8 @@
           <div id="canvas-grid" class="canvas-grid-surface">
             <!-- Canvas items (cards, stickies) populated here -->
           </div>
+          <!-- Live multiplayer cursor layer for canvas -->
+          <div id="canvas-cursors-layer" class="canvas-cursors-layer"></div>
         </div>
       </section>
 
@@ -232,6 +267,57 @@
             </div>
           </div>
 
+          <!-- NEW: Network Partition & Split-Brain Simulator -->
+          <div class="chaos-card glass-panel partition-panel">
+            <div class="panel-header-split">
+              <h2 class="card-title">
+                <span class="card-icon">⚡</span> Network Partition Simulator (NetSplit)
+              </h2>
+              <span id="partition-status-badge" class="status-pill status-connected">NO PARTITION</span>
+            </div>
+            <p class="card-desc">Simulate a distributed split-brain condition by isolating Node 1 from the Event Bus. Clients on Node 1 and Nodes 2/3 will edit independently, then automatically converge when healed.</p>
+            <div class="partition-actions">
+              <button id="btn-sever-partition" class="btn-danger">
+                <span>💥</span> Sever Node 1 Link (NetSplit)
+              </button>
+              <button id="btn-heal-partition" class="btn-success">
+                <span>💚</span> Heal Partition & Converge State
+              </button>
+            </div>
+            <div id="partition-info-box" class="partition-info-box">
+              <div class="part-info-step"><b>Test Flow:</b> 1. Click <i>Sever Node 1</i> &rarr; 2. Type in Node 1 (port 4001) &rarr; 3. Type in Node 2 (port 4002) &rarr; 4. Click <i>Heal Partition</i> to observe mathematical convergence!</div>
+            </div>
+          </div>
+
+          <!-- NEW: Automated Chaos Monkey Bots -->
+          <div class="chaos-card glass-panel bots-panel">
+            <div class="panel-header-split">
+              <h2 class="card-title">
+                <span class="card-icon">🐒</span> Automated Chaos Monkey Bots
+              </h2>
+              <span id="bots-counter-badge" class="counter-badge">0 Bots Active</span>
+            </div>
+            <p class="card-desc">Spawn automated virtual peers that hammer the cluster with concurrent typing, canvas moves, and intermittent socket drops.</p>
+            <div class="bot-actions">
+              <button id="btn-spawn-bots" class="btn-action">
+                <span>🚀</span> Spawn 3 Chaos Bots
+              </button>
+              <button id="btn-stop-bots" class="btn-subtle" disabled>
+                <span>🛑</span> Stop Bots
+              </button>
+            </div>
+            <div class="bot-stats-row">
+              <div class="bot-stat-item">
+                <span class="bot-stat-label">Bot Operations Dispatched:</span>
+                <span id="bot-ops-count" class="bot-stat-val">0</span>
+              </div>
+              <div class="bot-stat-item">
+                <span class="bot-stat-label">Bot Cluster Drops:</span>
+                <span id="bot-drops-count" class="bot-stat-val">0</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Pending Mutation Queue Inspector -->
           <div class="chaos-card glass-panel queue-panel">
             <div class="panel-header-split">
@@ -274,6 +360,72 @@
         </div>
       </section>
     </main>
+
+    <!-- NEW: Time-Travel Scrubber Bar -->
+    <div id="time-travel-bar" class="time-travel-bar glass-panel hidden">
+      <div class="tt-left">
+        <button id="btn-tt-play" class="btn-tt-ctrl" title="Play history animation">▶ Play</button>
+        <button id="btn-tt-prev" class="btn-tt-ctrl" title="Step one operation back">⏮</button>
+        <button id="btn-tt-next" class="btn-tt-ctrl" title="Step one operation forward">⏭</button>
+        <div class="tt-speed-picker">
+          <label>Speed:</label>
+          <select id="tt-speed-select" class="custom-select-mini">
+            <option value="1">1x</option>
+            <option value="2" selected>2x</option>
+            <option value="5">5x</option>
+          </select>
+        </div>
+      </div>
+      <div class="tt-center">
+        <input type="range" id="tt-slider" min="0" max="0" value="0" class="custom-range tt-range" />
+        <div class="tt-info-row">
+          <span id="tt-step-label">Step: 0 / 0</span>
+          <span id="tt-op-detail">Reconstructing mutation stream...</span>
+          <span id="tt-clock-label">Lamport: 0</span>
+        </div>
+      </div>
+      <div class="tt-right">
+        <button id="btn-tt-live" class="btn-success btn-compact">
+          🟢 Return to Live
+        </button>
+      </div>
+    </div>
+
+    <!-- NEW: Slide-Out Collaborative Chat & Activity Drawer -->
+    <aside id="chat-drawer" class="chat-drawer glass-panel hidden">
+      <div class="drawer-header">
+        <div class="drawer-tabs">
+          <button id="drawer-tab-chat" class="drawer-tab active" data-drawer-tab="chat">
+            <span>💬</span> Room Chat
+          </button>
+          <button id="drawer-tab-activity" class="drawer-tab" data-drawer-tab="activity">
+            <span>⚡</span> Activity Log
+          </button>
+        </div>
+        <button id="btn-close-drawer" class="btn-close-drawer" title="Close drawer">&times;</button>
+      </div>
+
+      <!-- Drawer Content: Chat -->
+      <div id="drawer-view-chat" class="drawer-view active">
+        <div id="chat-messages-container" class="chat-messages-list">
+          <!-- Chat messages render dynamically -->
+        </div>
+        <div id="chat-typing-status" class="chat-typing-indicator hidden">
+          Someone is typing...
+        </div>
+        <form id="chat-form" class="chat-input-bar">
+          <input type="text" id="chat-input" class="chat-input-field" placeholder="Send a message to room..." maxlength="300" autocomplete="off" />
+          <button type="submit" id="btn-send-chat" class="btn-action btn-send">Send</button>
+        </form>
+      </div>
+
+      <!-- Drawer Content: Activity Feed -->
+      <div id="drawer-view-activity" class="drawer-view">
+        <div id="activity-events-container" class="activity-events-list">
+          <!-- Activity events render dynamically -->
+        </div>
+      </div>
+    </aside>
   </div>
 
   <script type="module" src="app.js"></script>
